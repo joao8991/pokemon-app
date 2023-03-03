@@ -11,7 +11,7 @@ export default function PokemonComponent({
   return (
     <Link key={id} href={`pokemon/${name}`}>
       <Image
-        src={"https://picsum.photos/seed/picsum/200/300"}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
         alt={name}
         width={200}
         height={200}

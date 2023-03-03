@@ -1,20 +1,9 @@
-import PokemonComponent from "./components/Pokemon";
+import PokemonsList from "@/components/PokemonsList";
 import { fetchPokemons } from "./graphql/pokemons";
 import { Pokemon, PokemonResponse } from "./types/Pokemon";
 
 export default async function Home() {
-  const pokemons: Pokemon[] = await fetchPokemons().then(
-    (responseJson: PokemonResponse) => responseJson.data.pokemon_v2_pokemon
-  );
+  const pokemons: Pokemon[] = await fetchPokemons();
 
-  return (
-    <main>
-      <h1>pokemons</h1>main page
-      <div>
-        {pokemons.map(({ id, name }) => (
-          <PokemonComponent key={id} id={id} name={name} />
-        ))}
-      </div>
-    </main>
-  );
+  return <PokemonsList pokemons={pokemons} />;
 }

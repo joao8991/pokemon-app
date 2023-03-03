@@ -36,3 +36,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## notes
+
+- had to mock the request because pokemon API has a limit of 100 request per hour
+- tried to get the images from the pokemon_v2_pokemonsprites field but it was not found
+
+## suggested improvements
+
+## what else could I do
