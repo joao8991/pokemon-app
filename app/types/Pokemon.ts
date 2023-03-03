@@ -1,7 +1,9 @@
 export interface Pokemon {
   id: number;
   name: string;
-  height: number;
+  pokemon_v2_pokemonsprites: {
+    sprites: string;
+  }[];
 }
 export interface PokemonResponse {
   data: {
