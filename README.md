@@ -37,11 +37,27 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## notes
+## To run Cypress tests
+
+You will need 2 terminal windows
+
+In the first terminal run the following command to start the app:
+
+`npm run dev`
+
+When the app is running locally in the port 3000 run the following command to open cypress:
+
+`npm run cypress`
+
+Now inside the Cypress interface choose the "E2E Testing" option and then "google chrome". Here you will find a list of tests, click the one you would like to run.
+
+## Notes
 
 - had to mock the request because pokemon API has a limit of 100 request per hour
 - tried to get the images from the pokemon_v2_pokemonsprites field but it was not found
 
-## suggested improvements
+## Suggested improvements
 
-## what else could I do
+- find a graphql API that has no limit of requests and a better performance in general
+
+## What else could I do

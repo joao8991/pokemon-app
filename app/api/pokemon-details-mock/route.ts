@@ -2,8 +2,7 @@ import { delay } from "@/lib/utils";
 import { PokemonDetailsResponse } from "@/types/PokemonDetails";
 
 export async function POST() {
-  await delay(2000);
-
+  await delay(1000);
   return new Response(JSON.stringify(pokemonDetailsExample), { status: 200 });
 }
 
