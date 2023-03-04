@@ -1,5 +1,11 @@
 ## Getting Started
 
+If you are starting the project in a new computer run
+
+```bash
+npm install
+```
+
 First, run the development server:
 
 ```bash
@@ -44,6 +50,7 @@ Now inside the Cypress interface choose the "E2E Testing" option and then "googl
 ## Design improvements
 
 - install a UI Components Library like Chakra UI to have some components that improve UX, e.g. search bar with autofill and suggestion
+- create contend loaders for loading, always give a good feeling to the users
 
 # Note about the PokeAPI Graphql Problem
 
