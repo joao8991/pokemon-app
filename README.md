@@ -63,6 +63,8 @@ Now inside the Cypress interface choose the "E2E Testing" option and then "googl
 ## What else could I do
 
 - could create pagination based on a route param, then the users could access a specific page and send the url with the page selected. Same thing for the search query. This would imply sending more details in the graphql request, props as limit, and offset. Where for page 1 would be limit:16 and offset:0, page 2 limit:16 offset:16, ...
+- more e2e tests, for example to test the pagination or search logics
+- add unit tests, normally I tend to do unit tests mostly for method with complex logic(e.g. a method that is responsible to calculate a complex value and has multiple points of failure), to test app functioning I prefer end to end test.
 
 ## Design improvements
 
