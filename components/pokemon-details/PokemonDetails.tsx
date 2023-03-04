@@ -10,12 +10,6 @@ const PageLayout = styled.main`
 `;
 const PokemonInfo = styled.div``;
 
-const WeightDiv = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: center;
-`;
-
 const ElementsList = styled.div`
   display: flex;
   gap: 10px;
