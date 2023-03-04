@@ -1,6 +1,9 @@
-import { PokemonResponse } from "@/app/types/Pokemon";
+import { delay } from "@/lib/utils";
+import { PokemonResponse } from "@/types/Pokemon";
 
-export async function POST(request: Request) {
+export async function POST() {
+  await delay(2000);
+
   return new Response(JSON.stringify(pokemonExample), { status: 200 });
 }
 

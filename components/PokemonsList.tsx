@@ -1,6 +1,6 @@
 "use client";
 
-import { Pokemon } from "@/app/types/Pokemon";
+import { Pokemon } from "@/types/Pokemon";
 import { useState } from "react";
 import PokemonComponent from "../components/Pokemon";
 
