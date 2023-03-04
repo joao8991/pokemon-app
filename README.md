@@ -61,3 +61,9 @@ Now inside the Cypress interface choose the "E2E Testing" option and then "googl
 - find a graphql API that has no limit of requests and a better performance in general
 
 ## What else could I do
+
+- could create pagination based on a route param, then the users could access a specific page and send the url with the page selected. Same thing for the search query. This would imply sending more details in the graphql request, props as limit, and offset. Where for page 1 would be limit:16 and offset:0, page 2 limit:16 offset:16, ...
+
+## Design improvements
+
+- install a UI Components Library like Chakra UI to have some components that improve UX, e.g. search bar with autofill and suggestion

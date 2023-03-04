@@ -1,3 +1,5 @@
+import ClientSideConfigs from "@/components/ClientSideConfigs";
+import StyledComponentsRegistry from "@/lib/registry";
 import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
@@ -17,7 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className}`}>{children}</body>
+      <body className={`${montserrat.className}`}>
+        <ClientSideConfigs>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </ClientSideConfigs>
+      </body>
     </html>
   );
 }

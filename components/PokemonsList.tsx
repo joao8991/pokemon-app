@@ -1,10 +1,40 @@
 "use client";
 
+import { PAGE_SIZE } from "@/lib/references";
 import { Pokemon } from "@/types/Pokemon";
 import { useState } from "react";
+import styled, { css } from "styled-components";
 import PokemonComponent from "../components/Pokemon";
+import TopPanel from "./TopPanel";
 
-const PAGE_SIZE = 16;
+const PokemonsHolder = styled.div`
+  ${({ theme: { breakpoints } }) => {
+    return css`
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(6, minmax(100px, 1fr));
+
+      //style for smaller screens
+      @media only screen and (max-width: ${breakpoints.large}) {
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
+      }
+      @media only screen and (max-width: ${breakpoints.smaller}) {
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+      }
+      @media only screen and (max-width: ${breakpoints.ultrasmall}) {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+      }
+      @media only screen and (max-width: ${breakpoints.hypersmall}) {
+        grid-template-columns: minmax(100px, 1fr);
+      }
+    `;
+  }}
+`;
+
+const NoPokemon = styled.div`
+  text-align: center;
+  font-size: 60px;
+`;
 
 export default function PokemonsList({ pokemons }: { pokemons: Pokemon[] }) {
   const [page, setPage] = useState<number>(0);
@@ -18,26 +48,31 @@ export default function PokemonsList({ pokemons }: { pokemons: Pokemon[] }) {
     setPage((previousValue) => previousValue + difference);
   };
 
-  const selectedPokemons = pokemons
-    .filter((pokemon) => pokemon.name.includes(searchInput))
-    .slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+  const filteredPokemons = pokemons.filter((pokemon) =>
+    pokemon.name.includes(searchInput)
+  );
+
+  const selectedPokemons = filteredPokemons.slice(
+    page * PAGE_SIZE,
+    (page + 1) * PAGE_SIZE
+  );
 
   return (
     <main>
-      <h1>pokemons</h1>main page
-      <input type={"search"} onChange={handleSearchInputChange} />
-      {page > 0 ? (
-        <button onClick={() => handlePageChange(-1)}>Previous</button>
-      ) : null}
-      {(page + 1) * PAGE_SIZE < pokemons.length ? (
-        <button onClick={() => handlePageChange(1)}>Next</button>
-      ) : null}
-      <div>
-        {selectedPokemons.length === 0 ? <div>no pokemon found</div> : null}
+      <TopPanel
+        page={page}
+        filteredPokemonsLength={filteredPokemons.length}
+        handleSearchInputChange={handleSearchInputChange}
+        handlePageChange={handlePageChange}
+      />
+      <PokemonsHolder>
+        {selectedPokemons.length === 0 ? (
+          <NoPokemon>no pokemon found</NoPokemon>
+        ) : null}
         {selectedPokemons.map(({ id, name }, index) => (
           <PokemonComponent key={index} id={id} name={name} />
         ))}
-      </div>
+      </PokemonsHolder>
     </main>
   );
 }
