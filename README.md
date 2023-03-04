@@ -1,5 +1,11 @@
 ## Getting Started
 
+If you are starting the project in a new computer run
+
+```bash
+npm install
+```
+
 First, run the development server:
 
 ```bash
