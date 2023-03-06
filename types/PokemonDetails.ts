@@ -5,21 +5,21 @@ export interface PokemonDetailsRaw {
   pokemon_v2_pokemontypes: {
     pokemon_v2_type: {
       name: string;
-    }[];
-  };
+    };
+  }[];
   pokemon_v2_pokemonstats: {
     pokemon_v2_stat: {
       name: string;
-    }[];
-  };
+    };
+  }[];
   pokemon_v2_pokemonspecy: {
     name: string;
   };
   pokemon_v2_pokemonmoves: {
     pokemon_v2_move: {
       name: string;
-    }[];
-  };
+    };
+  }[];
 }
 export interface PokemonDetails {
   id: number;
@@ -45,14 +45,14 @@ export const transformInPokemonDetails = (
     weight: pokemonDetailsRaw.weight,
     name: pokemonDetailsRaw.name,
     species: pokemonDetailsRaw.pokemon_v2_pokemonspecy.name,
-    stats: pokemonDetailsRaw.pokemon_v2_pokemonstats.pokemon_v2_stat.map(
-      (stat) => stat.name
+    stats: pokemonDetailsRaw.pokemon_v2_pokemonstats.map(
+      (stat) => stat.pokemon_v2_stat.name
     ),
-    types: pokemonDetailsRaw.pokemon_v2_pokemontypes.pokemon_v2_type.map(
-      (type) => type.name
+    types: pokemonDetailsRaw.pokemon_v2_pokemontypes.map(
+      (type) => type.pokemon_v2_type.name
     ),
-    moves: pokemonDetailsRaw.pokemon_v2_pokemonmoves.pokemon_v2_move.map(
-      (move) => move.name
+    moves: pokemonDetailsRaw.pokemon_v2_pokemonmoves.map(
+      (move) => move.pokemon_v2_move.name
     ),
   };
 };

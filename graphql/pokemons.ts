@@ -19,11 +19,16 @@ const ListOfPokemonsQuery = gql`
 `;
 
 const PokemonDetailQuery = gql`
-  query MyQuery($id: Int!) {
-    pokemon_v2_pokemon(where: { id: { _eq: $id } }) {
+  query MyQuery($name: String!) {
+    pokemon_v2_pokemon(where: { name: { _eq: $name } }) {
       name
       id
       weight
+      pokemon_v2_pokemonmoves {
+        pokemon_v2_move {
+          name
+        }
+      }
       pokemon_v2_pokemontypes {
         pokemon_v2_type {
           name
@@ -36,11 +41,6 @@ const PokemonDetailQuery = gql`
       }
       pokemon_v2_pokemonspecy {
         name
-      }
-      pokemon_v2_pokemonmoves {
-        pokemon_v2_move {
-          name
-        }
       }
     }
   }
@@ -79,7 +79,7 @@ export const fetchPokemons = (isMocked = true): Promise<Pokemon[]> => {
  * @return Json Object
  */
 export const fetchPokemonDetails = (
-  id: number,
+  name: string,
   isMocked = true
 ): Promise<PokemonDetails> => {
   return fetch(
@@ -95,13 +95,13 @@ export const fetchPokemonDetails = (
       body: JSON.stringify({
         query: print(PokemonDetailQuery),
         variables: {
-          id,
+          name,
         },
       }),
     }
   )
     .then((response) => response.json())
-    .then((responseJson: PokemonDetailsResponse) =>
-      transformInPokemonDetails(responseJson.data.pokemon_v2_pokemon[0])
-    );
+    .then((responseJson: PokemonDetailsResponse) => {
+      return transformInPokemonDetails(responseJson.data.pokemon_v2_pokemon[0]);
+    });
 };

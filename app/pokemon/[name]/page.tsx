@@ -3,8 +3,12 @@ import PokemonDetailsComponent from "@/components/pokemon-details/PokemonDetails
 import { fetchPokemonDetails } from "@/graphql/pokemons";
 import { PokemonDetails } from "@/types/PokemonDetails";
 
-export default async function Pokemon({ params }: { params: { id: number } }) {
-  const pokemonDetails: PokemonDetails = await fetchPokemonDetails(params.id);
+export default async function Pokemon({
+  params,
+}: {
+  params: { name: string };
+}) {
+  const pokemonDetails: PokemonDetails = await fetchPokemonDetails(params.name);
 
   return (
     <div>

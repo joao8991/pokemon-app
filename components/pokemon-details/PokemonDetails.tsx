@@ -13,6 +13,7 @@ const PokemonInfo = styled.div``;
 const ElementsList = styled.div`
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 `;
 
 const MoveElement = styled(InfoDiv)`
